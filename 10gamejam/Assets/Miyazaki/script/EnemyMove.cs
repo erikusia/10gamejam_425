@@ -32,25 +32,30 @@ public class EnemyMove : MonoBehaviour
     }
     private void Move()
     {
-        var vec = patrolPoint[currentPoint].position - transform.position;
-
-        //y軸固定
-        vec.y = 0;
-
-        transform.position += vec.normalized * MoveSpeed * Time.deltaTime;
-
-        if (vec.magnitude < 0.1f)
+        if(TargetOFF)
         {
-            currentPoint = (currentPoint + 1) % 4;
+            var vec = patrolPoint[currentPoint].position - transform.position;
+
+            //y軸固定
+            vec.y = 0;
+
+            transform.position += vec.normalized * MoveSpeed * Time.deltaTime;
+
+            if (vec.magnitude < 0.1f)
+            {
+                currentPoint = (currentPoint + 1) % 4;
+            }
         }
+       
     }
 
     //検知関数
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag=="Player")
         {
             Debug.Log("検知！");
+            TargetOFF = false;
         }
     }
 }
