@@ -6,17 +6,6 @@ using UnityEngine.UI;
 public class GamePlay : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField]
-    GameObject A;
-
-    [SerializeField]
-    GameObject B;
-
-    [SerializeField]
-    GameObject X;
-
-    [SerializeField]
-    GameObject Y;
 
     [SerializeField]
     List<GameObject> notes = new List<GameObject>();
@@ -33,6 +22,10 @@ public class GamePlay : MonoBehaviour
     [SerializeField]
     Slider hpSlider;
 
+    [SerializeField]
+    GameObject Rnotes;
+    [SerializeField]
+    GameObject ARnotes;
 
     float count;
     int a;
@@ -59,6 +52,16 @@ public class GamePlay : MonoBehaviour
                 count = 0;
             }
         }
+        else
+        {
+            if (count >= 3)
+            {
+                notes.Add(Instantiate(Rnotes));
+                anotes.Add(Instantiate(ARnotes));
+                count = 0;
+            }
+        }
+
 
         if(notes.Count!=0)
         {
@@ -159,6 +162,26 @@ public class GamePlay : MonoBehaviour
                 if (FNpos.x <= 0.5 && FNpos.x >= -0.5)
                 {
                     hpSlider.value += 5;
+                    Debug.Log("いいね！");
+                }
+
+            }
+            else Debug.Log("ミス！");
+            Destroy(notes[0]);
+            Destroy(anotes[0]);
+            notes.RemoveAt(0);
+            anotes.RemoveAt(0);
+        }
+
+        if (Input.GetButtonDown("Button_R"))
+        {
+            GameObject Fnotes = notes[0].gameObject;
+            if (Fnotes.name == "R(Clone)")
+            {
+                Vector3 FNpos = Fnotes.transform.position;
+                if (FNpos.x <= 0.5 && FNpos.x >= -0.5)
+                {
+                    hpSlider.value -= 3;
                     Debug.Log("いいね！");
                 }
 
