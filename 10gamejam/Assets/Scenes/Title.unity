@@ -1128,9 +1128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1fa10d5c24a14f4babcb5b25427c3f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gauge: {fileID: 0}
-  timeText: {fileID: 0}
-  gaugeText: {fileID: 0}
+  gauge: {fileID: 1061733562}
 --- !u!1 &1118826982
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class GameTimer : MonoBehaviour
 {
     [SerializeField] Image gauge;
-    [SerializeField] Text timeText;
-    [SerializeField] Text gaugeText;
+    //[SerializeField] Text timeText;
+    //[SerializeField] Text gaugeText;
 
     float second; // 秒数
 
@@ -15,8 +15,8 @@ public class GameTimer : MonoBehaviour
     void Start()
     {
         gauge.fillAmount = 0f;
-        timeText.text = "";
-        gaugeText.text = "";
+        //timeText.text = "";
+       // gaugeText.text = "";
     }
 
     // Update is called once per frame
@@ -29,13 +29,13 @@ public class GameTimer : MonoBehaviour
             gauge.fillAmount += 0.125f * Time.deltaTime;
 
             // ゲージ量を表示
-            gaugeText.text = gauge.fillAmount.ToString();
+           // gaugeText.text = gauge.fillAmount.ToString();
 
             // 秒数をカウント
             second += Time.deltaTime;
 
             // 秒数を表示
-            timeText.text = second + "秒";
+            //timeText.text = second + "秒";
 
         }
     }
