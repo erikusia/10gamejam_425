@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
+   
     [SerializeField, Header("巡回する場所")]
     private Transform[] patrolPoint;
 
@@ -11,6 +12,8 @@ public class EnemyMove : MonoBehaviour
     float MoveSpeed;
 
     private int currentPoint = 0;
+    private Rigidbody rd;
+    public GameObject player;
 
     //検知フラグ
     bool OnTarget = false;
@@ -18,7 +21,8 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        rd = GetComponent<Rigidbody>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -38,6 +42,15 @@ public class EnemyMove : MonoBehaviour
         if (vec.magnitude < 0.1f)
         {
             currentPoint = (currentPoint + 1) % 4;
+        }
+    }
+
+    //検知関数
+    void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag=="Player")
+        {
+            Debug.Log("検知！");
         }
     }
 }
