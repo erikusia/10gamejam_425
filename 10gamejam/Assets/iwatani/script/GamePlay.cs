@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GamePlay : MonoBehaviour
 {
@@ -21,28 +22,42 @@ public class GamePlay : MonoBehaviour
     List<GameObject> notes = new List<GameObject>();
 
     [SerializeField]
+    List<GameObject> anotes = new List<GameObject>();
+
+    [SerializeField]
     List<GameObject> Onotes = new List<GameObject>();
+
+    [SerializeField]
+    List<GameObject> Anotes = new List<GameObject>();
+
+    [SerializeField]
+    Slider hpSlider;
+
 
     float count;
     int a;
     void Start()
     {
-        
+    
     }
 
     // Update is called once per frame
     void Update()
     {
         count += Time.deltaTime;
-        
 
-        
-        if(count>=3)
+
+        if(Input.GetButton("Button_L"))
         {
-            int a=Random.Range(0, 4);
-            notes.Add(Instantiate(Onotes[a]));
-            Debug.Log(notes.Count);
-            count = 0;
+            Debug.Log("L押してる");
+            if (count >= 3)
+            {
+                int a = Random.Range(0, 4);
+                notes.Add(Instantiate(Onotes[a]));
+                anotes.Add(Instantiate(Anotes[a]));
+                Debug.Log(notes.Count);
+                count = 0;
+            }
         }
 
         if(notes.Count!=0)
@@ -51,8 +66,23 @@ public class GamePlay : MonoBehaviour
             for (int i = 0; i < notes.Count; i++)
             {
                 Vector3 pos = notes[i].gameObject.transform.position;
+                Vector3 apos= anotes[i].gameObject.transform.position;
                 pos.x += 0.07f;
+                apos.x -= 0.07f;
                 notes[i].gameObject.transform.position = pos;
+                anotes[i].gameObject.transform.position = apos;
+
+                if (notes[i].gameObject.transform.position.x >= 1)
+                {
+                    Destroy(notes[i]);
+                    notes.RemoveAt(i);   
+                }
+
+                if(anotes[i].gameObject.transform.position.x <= -1)
+                {
+                    Destroy(anotes[i]);
+                    anotes.RemoveAt(i);
+                }
             }
         }
     }
@@ -68,13 +98,16 @@ public class GamePlay : MonoBehaviour
                 Vector3 FNpos = Fnotes.transform.position;
                 if (FNpos.x<=0.5&&FNpos.x>=-0.5)
                 {
+                    hpSlider.value += 5;
                     Debug.Log("いいね！");
                 }
      
             }
             else Debug.Log("ミス！");
             Destroy(notes[0]);
+            Destroy(anotes[0]);
             notes.RemoveAt(0);
+            anotes.RemoveAt(0);
         }
 
         if (Input.GetButtonDown("Button_B"))
@@ -85,13 +118,16 @@ public class GamePlay : MonoBehaviour
                 Vector3 FNpos = Fnotes.transform.position;
                 if (FNpos.x <= 0.5 && FNpos.x >= -0.5)
                 {
+                    hpSlider.value += 5;
                     Debug.Log("いいね！");
                 }
 
             }
             else Debug.Log("ミス！");
             Destroy(notes[0]);
+            Destroy(anotes[0]);
             notes.RemoveAt(0);
+            anotes.RemoveAt(0);
         }
 
         if (Input.GetButtonDown("Button_X"))
@@ -102,13 +138,16 @@ public class GamePlay : MonoBehaviour
                 Vector3 FNpos = Fnotes.transform.position;
                 if (FNpos.x <= 0.5 && FNpos.x >= -0.5)
                 {
+                    hpSlider.value += 5;
                     Debug.Log("いいね！");
                 }
 
             }
             else Debug.Log("ミス！");
             Destroy(notes[0]);
+            Destroy(anotes[0]);
             notes.RemoveAt(0);
+            anotes.RemoveAt(0);
         }
 
         if (Input.GetButtonDown("Button_Y"))
@@ -119,13 +158,16 @@ public class GamePlay : MonoBehaviour
                 Vector3 FNpos = Fnotes.transform.position;
                 if (FNpos.x <= 0.5 && FNpos.x >= -0.5)
                 {
+                    hpSlider.value += 5;
                     Debug.Log("いいね！");
                 }
 
             }
             else Debug.Log("ミス！");
             Destroy(notes[0]);
+            Destroy(anotes[0]);
             notes.RemoveAt(0);
+            anotes.RemoveAt(0);
         }
     }
 }
