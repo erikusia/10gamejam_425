@@ -150,10 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1706eaaeb039cd1408d7494c4d368dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  A: {fileID: 8604449548614629916, guid: eec06690d2ebc1144b75784121dbe775, type: 3}
-  B: {fileID: 2216914551009108812, guid: c50168e25a02cae4a9bc3bb64930b097, type: 3}
-  X: {fileID: 2085899239103206249, guid: bd582332be7d1e54ca77dcc3bdedf57d, type: 3}
-  Y: {fileID: 5969500676138807926, guid: 99e4b37913853dc40b0cc83c81cb4048, type: 3}
   notes: []
   anotes: []
   Onotes:
@@ -167,6 +163,8 @@ MonoBehaviour:
   - {fileID: 7316403829495791325, guid: e8c1b0776893a4d40a96e697635a947e, type: 3}
   - {fileID: 4154233024928207351, guid: 211c0db83faf09248bf683d42261c75f, type: 3}
   hpSlider: {fileID: 181104267}
+  Rnotes: {fileID: 7884332297358570439, guid: 25764dd351d113343926af3c75f4de34, type: 3}
+  ARnotes: {fileID: 926368017555763929, guid: ff7da0c75abb0fc44af84c1734064ada, type: 3}
 --- !u!4 &64081366
 Transform:
   m_ObjectHideFlags: 0
