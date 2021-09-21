@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class GameTimer : MonoBehaviour
 {
     [SerializeField] Image gauge;
-    //[SerializeField] Text timeText;
-    //[SerializeField] Text gaugeText;
+    public float waveTimeOut;
+    public float waveTimeTrigger;
+
+    [SerializeField] Text timeText;
+    [SerializeField] Text gaugeText;
 
     float second; // 秒数
 
@@ -15,28 +18,52 @@ public class GameTimer : MonoBehaviour
     void Start()
     {
         gauge.fillAmount = 0f;
-        //timeText.text = "";
-       // gaugeText.text = "";
+        timeText.text = "";
+        gaugeText.text = "";
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (second <= 8)
+        if (second <= waveTimeOut)
         {
+            //ウェーブのリピート
+            StartWave();
+        }
+    }
 
+    void StartWave()
+    {
+       
             // ゲージを毎秒0.125増やす
-            gauge.fillAmount += 0.125f * Time.deltaTime;
-
-            // ゲージ量を表示
-           // gaugeText.text = gauge.fillAmount.ToString();
+            //gauge.fillAmount += 0.125f * Time.deltaTime;
+            gauge.fillAmount += (1 /waveTimeOut )* Time.deltaTime;
 
             // 秒数をカウント
             second += Time.deltaTime;
 
-            // 秒数を表示
-            //timeText.text = second + "秒";
+        // ゲージ量を表示
+        gaugeText.text = gauge.fillAmount.ToString();
 
+        // 秒数を表示
+        timeText.text = second + "秒";
+
+        if (second>waveTimeOut)
+        {
+            // ウェーブを生成する
+            second = 0;
+            waveTimeOut += waveTimeTrigger;
+            gauge.fillAmount = 0f; 
         }
+
+        //waveTimeTrigger = Time.time + waveTimeOut;
+
     }
+
+    //void GenerateWave()
+    //{
+    //    second = 0;
+    //    waveTimeOut += 10;
+       
+    //}
 }
