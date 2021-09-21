@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class EnemyMove : MonoBehaviour
 {
-   
+ 
+    
+    
     [SerializeField, Header("巡回する場所")]
     private Transform[] patrolPoint;
 
@@ -12,8 +16,11 @@ public class EnemyMove : MonoBehaviour
     float MoveSpeed;
 
     private int currentPoint = 0;
+    int Heartcount =0;
     private Rigidbody rd;
     public GameObject player;
+
+
 
     //検知フラグ
     bool OnTarget = false;
@@ -28,6 +35,18 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (OnTarget)
+        {
+            if (Input.GetKeyDown("joystick button 4"))
+            {
+                Debug.Log("button4");
+                Heartcount++;
+            }
+        }
+        if(Heartcount>3)
+        {
+            SceneManager.LoadScene("End");
+        }
         Move();
     }
     private void Move()
@@ -47,6 +66,8 @@ public class EnemyMove : MonoBehaviour
             }
         }
        
+        
+
     }
 
     //検知関数
@@ -55,7 +76,14 @@ public class EnemyMove : MonoBehaviour
         if(other.gameObject.tag=="Player")
         {
             Debug.Log("検知！");
-            TargetOFF = false;
+            
+            //TargetOFF = false;
+            OnTarget = true;
         }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        Heartcount = 0;
     }
 }
