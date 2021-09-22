@@ -108,10 +108,10 @@ public class GamePlay : MonoBehaviour
         {
             SceneManager.LoadScene("End");
         }
-        if(wavecount.count>2)
-        {
-            SceneManager.LoadScene("GameCler");
-        }
+        //if(wavecount.count>2)
+        //{
+        //    SceneManager.LoadScene("GameCler");
+        //}
     }
 
     //ボタン入力

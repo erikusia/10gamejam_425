@@ -14,6 +14,8 @@ public class GameTimer : MonoBehaviour
     public int count = 0; //ウェーブのカウント
     float second; // 秒数
 
+    Wave wavecount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +36,7 @@ public class GameTimer : MonoBehaviour
 
     void StartWave()
     {
-       
+           
             // ゲージを毎秒0.125増やす
             //gauge.fillAmount += 0.125f * Time.deltaTime;
             gauge.fillAmount += (1 /waveTimeOut )* Time.deltaTime;

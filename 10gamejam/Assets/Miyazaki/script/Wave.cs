@@ -8,6 +8,7 @@ public class Wave : MonoBehaviour
     [SerializeField] GameObject Wave1;
     [SerializeField] GameObject Wave2;
     [SerializeField] GameObject Wave3;
+    [SerializeField] GameTimer gameTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,16 +18,17 @@ public class Wave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        countTime += Time.deltaTime;
-        if (countTime > 5)
+        countTime = gameTimer.count;
+        //countTime += Time.deltaTime;
+        if (countTime > 0)
         {
             Wave1.SetActive(true);
         }
-        if (countTime > 20)
+        if (countTime > 1)
         {
             Wave2.SetActive(true);
         }
-        if (countTime > 40)
+        if (countTime > 2)
         {
             Wave3.SetActive(true);
             countTime = 0;
