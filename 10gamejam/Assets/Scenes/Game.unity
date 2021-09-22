@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -321,6 +321,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 631319999572319290, guid: c4be98a85e4cf43438538a4eca433ccb,
+        type: 3}
+      propertyPath: patroltime
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4465380951540876547, guid: c4be98a85e4cf43438538a4eca433ccb,
         type: 3}
       propertyPath: m_Name
@@ -434,12 +439,12 @@ PrefabInstance:
     - target: {fileID: 2084058091493308327, guid: 2d6cee290c29b9d40be91c923de6e91c,
         type: 3}
       propertyPath: waveTimeOut
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2084058091493308327, guid: 2d6cee290c29b9d40be91c923de6e91c,
         type: 3}
       propertyPath: waveTimeTrigger
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2084058091632608932, guid: 2d6cee290c29b9d40be91c923de6e91c,
         type: 3}
@@ -932,6 +937,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5265698370298608236, guid: e8470a2080b31d247981950ff863bdd6,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265698370298608236, guid: e8470a2080b31d247981950ff863bdd6,
+        type: 3}
+      propertyPath: patroltime
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265698370298608236, guid: e8470a2080b31d247981950ff863bdd6,
+        type: 3}
+      propertyPath: velocity.x
+      value: -0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8470a2080b31d247981950ff863bdd6, type: 3}
 --- !u!1 &483553381 stripped
@@ -1267,6 +1287,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214499410271398699, guid: 63597e0c707b899479b898ad6b75f0da,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214499410271398699, guid: 63597e0c707b899479b898ad6b75f0da,
+        type: 3}
+      propertyPath: patroltime
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214499410271398699, guid: 63597e0c707b899479b898ad6b75f0da,
+        type: 3}
+      propertyPath: velocity.x
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7793747503664482589, guid: 63597e0c707b899479b898ad6b75f0da,
         type: 3}

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294483864195145099}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 1}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 3835622540651492758}
@@ -187,6 +187,8 @@ MonoBehaviour:
   MoveSpeed: 10
   find: {fileID: 294483864195145099}
   countTime: 0
+  patroltime: 0
+  velocity: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
 --- !u!135 &3835622540651492755
 SphereCollider:

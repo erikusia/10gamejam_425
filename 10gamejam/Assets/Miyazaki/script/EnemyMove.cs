@@ -11,6 +11,7 @@ public class EnemyMove : MonoBehaviour
     [SerializeField, Header("移動スピード")]float MoveSpeed;
     [SerializeField]public GameObject find;
     [SerializeField]private float countTime;
+    [SerializeField]private float patroltime;
     [SerializeField] public Vector3 velocity;
 
     private int currentPoint = 0;
@@ -68,7 +69,7 @@ public class EnemyMove : MonoBehaviour
                 currentPoint = (currentPoint + 1) % 4;
             }
         }
-        if (countTime > 10)
+        if (countTime > patroltime)
         {
             TargetOFF = false;
         }
@@ -86,7 +87,7 @@ public class EnemyMove : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("検知！");
-            //find.SetActive(true);
+            find.SetActive(true);
             //TargetOFF = false;
             OnTarget = true;
         }
