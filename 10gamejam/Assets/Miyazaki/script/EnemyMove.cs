@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class EnemyMove : MonoBehaviour
 {
-    
-    [SerializeField, Header("巡回する場所")]
-    private Transform[] patrolPoint;
 
-    [SerializeField, Header("移動スピード")]
-    float MoveSpeed;
+    [SerializeField, Header("巡回する場所")] private Transform[] patrolPoint;
+    [SerializeField, Header("移動スピード")]float MoveSpeed;
+    [SerializeField]public GameObject find;
+    [SerializeField]private float countTime;
+    [SerializeField] public Vector3 velocity;
 
     private int currentPoint = 0;
-    int Heartcount =0;
+    int Heartcount = 0;
     private Rigidbody rd;
     public GameObject player;
 
@@ -28,20 +28,23 @@ public class EnemyMove : MonoBehaviour
     {
         rd = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
+        find.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (OnTarget)
         {
-            if (Input.GetButtonDown("Button_A")||Input.GetButtonDown("Button_B"))
+
+            if (Input.GetButtonDown("Button_A") || Input.GetButtonDown("Button_B") || Input.GetButtonDown("Button_X") || Input.GetButtonDown("Button_Y"))
             {
                 Debug.Log("A");
                 Heartcount++;
             }
         }
-        if(Heartcount>3)
+        if (Heartcount > 3)
         {
             SceneManager.LoadScene("End");
         }
@@ -49,7 +52,9 @@ public class EnemyMove : MonoBehaviour
     }
     private void Move()
     {
-        if(TargetOFF)
+        countTime += Time.deltaTime;
+      
+        if (TargetOFF)
         {
             var vec = patrolPoint[currentPoint].position - transform.position;
 
@@ -63,18 +68,25 @@ public class EnemyMove : MonoBehaviour
                 currentPoint = (currentPoint + 1) % 4;
             }
         }
-       
-        
+        if (countTime > 10)
+        {
+            TargetOFF = false;
+        }
+        if(!TargetOFF)
+        {
+            transform.Translate(velocity.x, velocity.y, velocity.z);
+            Destroy(this.gameObject, 3.0f);
+        }
 
     }
 
     //検知関数
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag=="Player")
+        if (other.gameObject.tag == "Player")
         {
             Debug.Log("検知！");
-            
+            //find.SetActive(true);
             //TargetOFF = false;
             OnTarget = true;
         }
@@ -83,5 +95,6 @@ public class EnemyMove : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         Heartcount = 0;
+        find.SetActive(false);
     }
 }
