@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class GameTimer : MonoBehaviour
 {
     [SerializeField] Image gauge;
-    public float waveTimeOut;
-    public float waveTimeTrigger;
+    [SerializeField] float waveTimeOut;
+    [SerializeField] float waveTimeTrigger;
 
     [SerializeField] Text timeText;
     [SerializeField] Text gaugeText;
