@@ -19,6 +19,16 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
     AudioSource bgmAudioSource;
     AudioSource seAudioSource;
 
+    public bool isPlayBgm;
+
+    public bool playBgm
+    {
+        get => isPlayBgm;
+        set => isPlayBgm = value;
+    }
+
+
+
     public float Volume
     {
         set
@@ -121,6 +131,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         bgmAudioSource.loop = true;
         bgmAudioSource.volume = BgmVolume * Volume;
         bgmAudioSource.Play();
+        isPlayBgm = true;
     }
 
     public void PlayBgmByName(string name)
@@ -132,6 +143,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
     {
         bgmAudioSource.Stop();
         bgmAudioSource.clip = null;
+        isPlayBgm = false;
     }
 
     //SE再生

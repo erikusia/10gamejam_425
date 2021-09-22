@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GamePlay : MonoBehaviour
 {
@@ -31,9 +32,19 @@ public class GamePlay : MonoBehaviour
     AudioSource audio;
     [SerializeField]
     AudioClip audioClip;
+    [SerializeField]
+    GameTimer wavecount;
 
     float count;
     int a;
+
+    private void Awake()
+    {
+        if (SoundManager.Instance.playBgm)
+        {
+            SoundManager.Instance.StopBgm();
+        }
+    }
     void Start()
     {
        
@@ -92,6 +103,14 @@ public class GamePlay : MonoBehaviour
                     anotes.RemoveAt(i);
                 }
             }
+        }
+        if (hpSlider.value<=0)
+        {
+            SceneManager.LoadScene("End");
+        }
+        if(wavecount.count>2)
+        {
+            SceneManager.LoadScene("GameCler");
         }
     }
 

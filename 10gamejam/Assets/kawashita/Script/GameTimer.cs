@@ -11,7 +11,7 @@ public class GameTimer : MonoBehaviour
 
     [SerializeField] Text timeText;
     [SerializeField] Text gaugeText;
-
+    public int count = 0; //ウェーブのカウント
     float second; // 秒数
 
     // Start is called before the first frame update
@@ -48,12 +48,13 @@ public class GameTimer : MonoBehaviour
         // 秒数を表示
         timeText.text = second + "秒";
 
-        if (second>waveTimeOut)
+        if (second>=waveTimeOut)
         {
             // ウェーブを生成する
             second = 0;
             waveTimeOut += waveTimeTrigger;
-            gauge.fillAmount = 0f; 
+            gauge.fillAmount = 0f;
+            count += 1;
         }
 
         //waveTimeTrigger = Time.time + waveTimeOut;
