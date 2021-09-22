@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class EnemyMove : MonoBehaviour
 {
- 
-    
     
     [SerializeField, Header("巡回する場所")]
     private Transform[] patrolPoint;
@@ -37,9 +35,9 @@ public class EnemyMove : MonoBehaviour
     {
         if (OnTarget)
         {
-            if (Input.GetKeyDown("joystick button 4"))
+            if (Input.GetButtonDown("Button_A")||Input.GetButtonDown("Button_B"))
             {
-                Debug.Log("button4");
+                Debug.Log("A");
                 Heartcount++;
             }
         }
