@@ -27,11 +27,16 @@ public class GamePlay : MonoBehaviour
     [SerializeField]
     GameObject ARnotes;
 
+    [SerializeField]
+    AudioSource audio;
+    [SerializeField]
+    AudioClip audioClip;
+
     float count;
     int a;
     void Start()
     {
-    
+       
     }
 
     // Update is called once per frame
@@ -101,6 +106,7 @@ public class GamePlay : MonoBehaviour
                 Vector3 FNpos = Fnotes.transform.position;
                 if (FNpos.x<=0.5&&FNpos.x>=-0.5)
                 {
+                    audio.PlayOneShot(audioClip);
                     hpSlider.value += 5;
                     Debug.Log("いいね！");
                 }
@@ -121,6 +127,7 @@ public class GamePlay : MonoBehaviour
                 Vector3 FNpos = Fnotes.transform.position;
                 if (FNpos.x <= 0.5 && FNpos.x >= -0.5)
                 {
+                    audio.PlayOneShot(audioClip);
                     hpSlider.value += 5;
                     Debug.Log("いいね！");
                 }
@@ -141,6 +148,7 @@ public class GamePlay : MonoBehaviour
                 Vector3 FNpos = Fnotes.transform.position;
                 if (FNpos.x <= 0.5 && FNpos.x >= -0.5)
                 {
+                    audio.PlayOneShot(audioClip);
                     hpSlider.value += 5;
                     Debug.Log("いいね！");
                 }
@@ -161,6 +169,7 @@ public class GamePlay : MonoBehaviour
                 Vector3 FNpos = Fnotes.transform.position;
                 if (FNpos.x <= 0.5 && FNpos.x >= -0.5)
                 {
+                    audio.PlayOneShot(audioClip);
                     hpSlider.value += 5;
                     Debug.Log("いいね！");
                 }
