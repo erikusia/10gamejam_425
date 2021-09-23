@@ -9,8 +9,12 @@ public class Title : MonoBehaviour
 {
     [SerializeField] private Button gameButton;
     [SerializeField] private Button OnryoButton;
+    [SerializeField] private Button resumeButton;
+    [SerializeField] private GameObject onryoPanel;
     [SerializeField]
     private GameObject gameUI;
+    [SerializeField]
+    private GameObject returnUI;
     [SerializeField]
     private GameObject onryoUI;
     private void Awake()
@@ -27,7 +31,10 @@ public class Title : MonoBehaviour
     {
         SoundManager.Instance.PlayBgmByName("Acoustic_2");
         OnryoButton.onClick.AddListener(Onryo);
+        onryoPanel.SetActive(false);
+        returnUI.SetActive(false);
         gameButton.onClick.AddListener(gameScene);
+        resumeButton.onClick.AddListener(Resume);
     }
 
     // Update is called once per frame
@@ -46,8 +53,20 @@ public class Title : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
+    private void Resume()
+    {
+        Time.timeScale = 1;  // 再開
+        returnUI.SetActive(false);
+        onryoUI.SetActive(true);
+        onryoPanel.SetActive(false);
+        gameUI.SetActive(true);
+    }
+
     private void Onryo()
     {
-
+        onryoPanel.SetActive(true);
+        returnUI.SetActive(true);
+        onryoUI.SetActive(false);
+        gameUI.SetActive(false);
     }
 }

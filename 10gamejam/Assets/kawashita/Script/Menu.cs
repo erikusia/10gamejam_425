@@ -8,6 +8,7 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] private Button pauseButton;
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject onryoPanel;
     [SerializeField] private Button resumeButton;
    [SerializeField] private Button TitleButton;
     [SerializeField] private Button OnryoButton;
@@ -23,6 +24,7 @@ public class Menu : MonoBehaviour
     void Start()
     {
         pausePanel.SetActive(false);
+        onryoPanel.SetActive(false);
         pauseButton.onClick.AddListener(Pause);
         resumeButton.onClick.AddListener(Resume);
         TitleButton.onClick.AddListener(Title);
@@ -61,6 +63,6 @@ public class Menu : MonoBehaviour
 
     private void Onryo()
     {
-
+        onryoPanel.SetActive(true);
     }
 }
