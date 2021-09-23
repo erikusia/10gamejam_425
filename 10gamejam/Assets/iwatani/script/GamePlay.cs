@@ -54,7 +54,7 @@ public class GamePlay : MonoBehaviour
     }
     void Start()
     {
-       
+        SoundManager.Instance.PlayBgmByName("game");
     }
 
     // Update is called once per frame
@@ -117,7 +117,8 @@ public class GamePlay : MonoBehaviour
                 if (notes[i].gameObject.transform.position.x >= 1)
                 {
                     Destroy(notes[i]);
-                    notes.RemoveAt(i);   
+                    notes.RemoveAt(i);
+                    hpSlider.value -= 5;
                 }
 
                 if(anotes[i].gameObject.transform.position.x <= -1)
@@ -158,8 +159,9 @@ public class GamePlay : MonoBehaviour
                 Vector3 FNpos = Fnotes.transform.position;
                 if (FNpos.x<=0.5&&FNpos.x>=-0.5)
                 {
-                    audio.PlayOneShot(audioClip);
-                    hpSlider.value += 5;
+                   // audio.PlayOneShot(audioClip);
+                    SoundManager.Instance.PlaySeByName("心臓の鼓動");
+                    hpSlider.value += 10;
                     Debug.Log("いいね！");
                 }
      
@@ -169,6 +171,7 @@ public class GamePlay : MonoBehaviour
             Destroy(anotes[0]);
             notes.RemoveAt(0);
             anotes.RemoveAt(0);
+            hpSlider.value -= 5;
         }
 
         if (Input.GetButtonDown("Button_B"))
@@ -179,8 +182,9 @@ public class GamePlay : MonoBehaviour
                 Vector3 FNpos = Fnotes.transform.position;
                 if (FNpos.x <= 0.5 && FNpos.x >= -0.5)
                 {
-                    audio.PlayOneShot(audioClip);
-                    hpSlider.value += 5;
+                    //audio.PlayOneShot(audioClip);
+                    SoundManager.Instance.PlaySeByName("心臓の鼓動");
+                    hpSlider.value += 10;
                     Debug.Log("いいね！");
                 }
 
@@ -190,6 +194,7 @@ public class GamePlay : MonoBehaviour
             Destroy(anotes[0]);
             notes.RemoveAt(0);
             anotes.RemoveAt(0);
+            hpSlider.value -= 5;
         }
 
         if (Input.GetButtonDown("Button_X"))
@@ -200,8 +205,9 @@ public class GamePlay : MonoBehaviour
                 Vector3 FNpos = Fnotes.transform.position;
                 if (FNpos.x <= 0.5 && FNpos.x >= -0.5)
                 {
-                    audio.PlayOneShot(audioClip);
-                    hpSlider.value += 5;
+                    // audio.PlayOneShot(audioClip);
+                    SoundManager.Instance.PlaySeByName("心臓の鼓動");
+                    hpSlider.value += 10;
                     Debug.Log("いいね！");
                 }
 
@@ -211,6 +217,7 @@ public class GamePlay : MonoBehaviour
             Destroy(anotes[0]);
             notes.RemoveAt(0);
             anotes.RemoveAt(0);
+            hpSlider.value -= 5;
         }
 
         if (Input.GetButtonDown("Button_Y"))
@@ -221,8 +228,9 @@ public class GamePlay : MonoBehaviour
                 Vector3 FNpos = Fnotes.transform.position;
                 if (FNpos.x <= 0.5 && FNpos.x >= -0.5)
                 {
-                    audio.PlayOneShot(audioClip);
-                    hpSlider.value += 5;
+                    //audio.PlayOneShot(audioClip);
+                    SoundManager.Instance.PlaySeByName("心臓の鼓動");
+                    hpSlider.value += 10;
                     Debug.Log("いいね！");
                 }
 
@@ -232,6 +240,7 @@ public class GamePlay : MonoBehaviour
             Destroy(anotes[0]);
             notes.RemoveAt(0);
             anotes.RemoveAt(0);
+            hpSlider.value -= 5;
         }
 
         if (Input.GetButtonDown("Button_R"))
@@ -242,7 +251,7 @@ public class GamePlay : MonoBehaviour
                 Vector3 FNpos = Fnotes.transform.position;
                 if (FNpos.x <= 0.5 && FNpos.x >= -0.5)
                 {
-                    hpSlider.value -= 3;
+                    hpSlider.value += 5;
                     Debug.Log("いいね！");
                 }
 
@@ -252,6 +261,7 @@ public class GamePlay : MonoBehaviour
             Destroy(anotes[0]);
             notes.RemoveAt(0);
             anotes.RemoveAt(0);
+            hpSlider.value -= 5;
         }
     }
 }

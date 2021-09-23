@@ -33,7 +33,7 @@ public class Title : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SoundManager.Instance.PlayBgmByName("Acoustic_2");
+        SoundManager.Instance.PlayBgmByName("op");
         OnryoButton.onClick.AddListener(Onryo);
         onryoPanel.SetActive(false);
         returnUI.SetActive(false);

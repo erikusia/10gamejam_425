@@ -24,6 +24,7 @@ public class End : MonoBehaviour
     {
         gameButton.onClick.AddListener(gameScene);
         OnryoButton.onClick.AddListener(Onryo);
+        SoundManager.Instance.PlayBgmByName("badend");
     }
 
     // Update is called once per frame
