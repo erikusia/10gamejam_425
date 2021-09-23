@@ -179,8 +179,6 @@ namespace VSCodeEditor
             {
                 var assemblies = m_AssemblyNameProvider.GetAssemblies(ShouldFileBePartOfSolution);
                 var allProjectAssemblies = RelevantAssembliesForMode(assemblies).ToList();
-                SyncSolution(allProjectAssemblies);
-
                 var allAssetProjectParts = GenerateAllAssetProjectParts();
 
                 var affectedNames = affectedFiles.Select(asset => m_AssemblyNameProvider.GetAssemblyNameFromScriptPath(asset)).Where(name => !string.IsNullOrWhiteSpace(name)).Select(name => name.Split(new [] {".dll"}, StringSplitOptions.RemoveEmptyEntries)[0]);
@@ -476,6 +474,7 @@ namespace VSCodeEditor
                     projectBuilder.Append("    <ProjectReference Include=\"").Append(reference.name).Append(GetProjectExtension()).Append("\">").Append(k_WindowsNewline);
                     projectBuilder.Append("      <Project>{").Append(ProjectGuid(reference.name)).Append("}</Project>").Append(k_WindowsNewline);
                     projectBuilder.Append("      <Name>").Append(reference.name).Append("</Name>").Append(k_WindowsNewline);
+                    projectBuilder.Append("      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>").Append(k_WindowsNewline);
                     projectBuilder.Append("    </ProjectReference>").Append(k_WindowsNewline);
                 }
             }
