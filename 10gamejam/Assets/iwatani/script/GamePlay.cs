@@ -21,7 +21,7 @@ public class GamePlay : MonoBehaviour
     List<GameObject> Anotes = new List<GameObject>();
 
     [SerializeField]
-    Slider hpSlider;
+     Slider hpSlider;
 
     [SerializeField]
     GameObject Rnotes;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class EnemyMove : MonoBehaviour
@@ -13,6 +14,9 @@ public class EnemyMove : MonoBehaviour
     [SerializeField]private float countTime;
     [SerializeField]private float patroltime;
     [SerializeField] public Vector3 velocity;
+    [SerializeField] Slider slider;
+    [SerializeField] int Hitpoint;
+    GamePlay gamePlay;
 
     private int currentPoint = 0;
     int Heartcount = 0;
@@ -42,7 +46,9 @@ public class EnemyMove : MonoBehaviour
             if (Input.GetButtonDown("Button_A") || Input.GetButtonDown("Button_B") || Input.GetButtonDown("Button_X") || Input.GetButtonDown("Button_Y"))
             {
                 Debug.Log("A");
-                Heartcount++;
+                //Heartcount++;
+                slider.value-=Hitpoint;
+                //gamePlay.hpSlider.value -= 1;
             }
         }
         if (Heartcount > 3)
@@ -97,5 +103,6 @@ public class EnemyMove : MonoBehaviour
     {
         Heartcount = 0;
         find.SetActive(false);
+        OnTarget = false;
     }
 }

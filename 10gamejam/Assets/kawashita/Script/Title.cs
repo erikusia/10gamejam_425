@@ -10,6 +10,7 @@ public class Title : MonoBehaviour
     [SerializeField] private Button gameButton;
     [SerializeField] private Button OnryoButton;
     [SerializeField] private Button resumeButton;
+    [SerializeField] private Button EndButton;
     [SerializeField] private GameObject onryoPanel;
     [SerializeField]
     private GameObject gameUI;
@@ -17,6 +18,9 @@ public class Title : MonoBehaviour
     private GameObject returnUI;
     [SerializeField]
     private GameObject onryoUI;
+    GameObject gameManagerObj;
+    GameObject buttonObj;
+
     private void Awake()
     {
         if( SoundManager.Instance.playBgm)
@@ -35,6 +39,8 @@ public class Title : MonoBehaviour
         returnUI.SetActive(false);
         gameButton.onClick.AddListener(gameScene);
         resumeButton.onClick.AddListener(Resume);
+        EndButton.onClick.AddListener(Quit);
+        gameManagerObj = GameObject.FindGameObjectWithTag("GameController");
     }
 
     // Update is called once per frame
