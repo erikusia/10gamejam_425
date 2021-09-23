@@ -41,11 +41,11 @@ public class Title : MonoBehaviour
     void Update()
     {
        
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("aaaaaaaaa"); 
-            SceneManager.LoadScene("Game");
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Debug.Log("aaaaaaaaa"); 
+        //    SceneManager.LoadScene("Game");
+        //}
     }
 
     private void gameScene()
