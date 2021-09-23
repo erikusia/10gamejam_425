@@ -29,14 +29,21 @@ public class GamePlay : MonoBehaviour
     GameObject ARnotes;
 
     [SerializeField]
-    AudioSource audio;
+    new AudioSource audio;
     [SerializeField]
     AudioClip audioClip;
     [SerializeField]
     GameTimer wavecount;
 
+    [SerializeField]
+    List<GameObject> Enemys = new List<GameObject>();
+
+    GameObject enemy;
     float count;
     int a;
+
+    float min;
+    int notescout;
 
     private void Awake()
     {
@@ -55,31 +62,47 @@ public class GamePlay : MonoBehaviour
     {
         count += Time.deltaTime;
 
-
-        if(Input.GetButton("Button_L"))
+        for (int i = 0; i < Enemys.Count; i++)
         {
-            Debug.Log("L押してる");
-            if (count >= 3)
+            if(Enemys[i]!=null)
             {
-                int a = Random.Range(0, 4);
-                notes.Add(Instantiate(Onotes[a]));
-                anotes.Add(Instantiate(Anotes[a]));
-                Debug.Log(notes.Count);
-                count = 0;
+                if (Enemys[i].activeInHierarchy)
+                {
+                    float b = Random.RandomRange(5, 0.5f);
+                    if (Input.GetButton("Button_L"))
+                    {
+                        Debug.Log("L押してる");
+                        if (count >= b)
+                        {
+                            int a = Random.Range(0, 4);
+                            notes.Add(Instantiate(Onotes[a]));
+                            anotes.Add(Instantiate(Anotes[a]));
+                            Debug.Log(notes.Count);
+                            count = 0;
+                        }
+                    }
+                    else
+                    {
+                        if (count>= b)
+                        {
+                            notes.Add(Instantiate(Rnotes));
+                            anotes.Add(Instantiate(ARnotes));
+                            count = 0;
+                        }
+                    }
+
+                    Debug.Log(b);
+                }
+
+                if (Enemys[i] == null)
+                {
+                    Enemys.RemoveAt(i);
+                }
             }
-        }
-        else
-        {
-            if (count >= 3)
-            {
-                notes.Add(Instantiate(Rnotes));
-                anotes.Add(Instantiate(ARnotes));
-                count = 0;
-            }
+
         }
 
-
-        if(notes.Count!=0)
+        if (notes.Count!=0)
         {
             DetectKeys();
             for (int i = 0; i < notes.Count; i++)
