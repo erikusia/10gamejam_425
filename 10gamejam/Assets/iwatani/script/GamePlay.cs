@@ -61,7 +61,7 @@ public class GamePlay : MonoBehaviour
     void Update()
     {
         count += Time.deltaTime;
-
+        if (Input.GetKey(KeyCode.Escape)) Quit();
         for (int i = 0; i < Enemys.Count; i++)
         {
             if(Enemys[i]!=null)
@@ -131,10 +131,20 @@ public class GamePlay : MonoBehaviour
         {
             SceneManager.LoadScene("End");
         }
-        //if(wavecount.count>2)
-        //{
-        //    SceneManager.LoadScene("GameCler");
-        //}
+        if (wavecount.count > 3)
+        {
+            SceneManager.LoadScene("GameCler");
+        }
+
+    }
+
+    void Quit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE
+      UnityEngine.Application.Quit();
+#endif
     }
 
     //ボタン入力

@@ -40,7 +40,7 @@ public class Title : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (Input.GetKey(KeyCode.Escape)) Quit();
         //if (Input.GetKeyDown(KeyCode.Space))
         //{
         //    Debug.Log("aaaaaaaaa"); 
@@ -68,5 +68,13 @@ public class Title : MonoBehaviour
         returnUI.SetActive(true);
         onryoUI.SetActive(false);
         gameUI.SetActive(false);
+    }
+    void Quit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE
+      UnityEngine.Application.Quit();
+#endif
     }
 }
